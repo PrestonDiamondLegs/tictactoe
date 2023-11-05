@@ -89,8 +89,8 @@ int computer_move(int gridAR[3][3]) {
     int row;
     int coloum;
     if (PatternFormationFinder(gridAR,&row,&coloum) == 1) {
-            printf("2");
-//        gridAR[row][coloum]=2;
+            printf("2 formation");
+        gridAR[row][coloum]=2;
     }
     else {
         for(int i=0;i<3;i++) {
@@ -98,7 +98,7 @@ int computer_move(int gridAR[3][3]) {
  	            if (gridAR[i][j]==0) {
                     gridAR[i][j]=2;
 //                  printf("%d,%d\n",i,j);
-                    printf("2\n");
+                    //printf("2\n");
                     i=3;
                     break;
                 }
@@ -197,24 +197,30 @@ int PatternFormationFinder(int gridAR[3][3],int *row,int *coloum) {
     int twoCount=0;
     int zeroCount=0;
     for(int i=0;i<3;i++) {
+	twoCount=0;
+	zeroCount=0;
         for(int j=0;j<3;j++) {
             switch(gridAR[i][j]) {
                 case 0:
                 *row=i;
                 *coloum=j;
                 zeroCount++;
+           	printf("Pattern formation: zeroCount=%d\n", zeroCount); 	
                 break;
                 case 1:
                 //nothing
+           	printf("Pattern formation: 1\n"); 	
                 break;
                 case 2:
+           	printf("Pattern formation: 2\n"); 	
                 twoCount++;
                 break;
             }
         }
-    }
-    if(zeroCount==1 & twoCount==0) {
-        return 1;
+    	if(zeroCount==1 && twoCount==0) {
+        	printf("Pattern formation: found\n"); 	
+        	return 1;
+    	}
     }
 //    return 0;
     twoCount=0;
