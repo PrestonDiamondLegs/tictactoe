@@ -15,8 +15,8 @@ int print_grid(int gridAR[3][3]) {
 	}
     }
     printf("\n	----------\n");
-
 }
+
 int main() {
     int gridAR[3][3];
     int winner;
